@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    .tracking-wide {
+        letter-spacing: 0.1em;
+    }
+
+    .word-spacing-wide {
+        word-spacing: 0.2em;
+    }
+}
