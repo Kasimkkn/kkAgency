@@ -3,11 +3,33 @@
 @tailwind utilities;
 
 @layer utilities {
-    .tracking-wide {
-        letter-spacing: 0.1em;
-    }
+  .tracking-wide {
+    letter-spacing: 0.1em;
+  }
 
-    .word-spacing-wide {
-        word-spacing: 0.2em;
-    }
+  .word-spacing-wide {
+    word-spacing: 0.2em;
+  }
+}
+
+@font-face {
+  font-family: "Irish";
+  /* Name of the font */
+  src: url("./assets/fonts/IrishGrover-Regular.ttf");
+  /* Path to the font file */
+}
+
+@font-face {
+  font-family: "mango";
+  /* Name of the font */
+  src: url("./assets/fonts/BlackMango-Bold.ttf");
+  /* Path to the font file */
+}
+
+.font-irish {
+  font-family: "Irish";
+}
+
+.font-mango {
+  font-family: 'mango';
 }

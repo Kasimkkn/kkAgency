@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import heroBg from './assets/img/herobg.png'
 import img1 from './assets/img/img1.png'
 import project1 from './assets/img/p1.jpg'
@@ -10,6 +10,7 @@ import project6 from './assets/img/p5.png'
 import rings from './assets/img/rings.png'
 import v1 from './assets/img/v1.png'
 import TeamSection from "./components/TeamSection";
+import Lenis from "lenis";
 const App = () => {
   const items = [
     { text: 'Marketing', color: 'text-white' },
@@ -20,28 +21,49 @@ const App = () => {
     { text: 'Graphic Design', color: 'text-white' },
   ];
 
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 0.5,
+      easing: (t) => 1 - Math.pow(1 - t, 3), // cubic ease-out
+
+      smooth: true, // enable smooth scroll
+    });
+
+    // Animation frame loop
+    const animate = (time) => {
+      lenis.raf(time);
+      requestAnimationFrame(animate);
+    };
+    requestAnimationFrame(animate);
+
+    // Clean up on component unmount
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
+
   return (
     <div className="bg-[#fdfcf8] text-gray-800 font-serif">
       {/* Header Section */}
       <nav className="flex items-center justify-between py-4 px-6 w-full fixed z-50 
          bg-purple-100 rounded-md bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-20 ">
-        <a href="/" className="text-xl font-bold">
+        <a href="/" className="text-xl font-bold font-irish">
           CREATIVE
         </a>
-        <div className="hidden md:flex items-center space-x-6">
-          <a href="/" className="text-sm">
+        <div className="hidden md:flex items-center space-x-6 font-irish">
+          <a href="/" className="text-lg">
             Home
           </a>
-          <a href="/about" className="text-sm">
+          <a href="/about" className="text-lg">
             About
           </a>
-          <a href="/services" className="text-sm">
+          <a href="/services" className="text-lg">
             Services
           </a>
-          <a href="/portfolio" className="text-sm">
+          <a href="/portfolio" className="text-lg">
             Portfolio
           </a>
-          <a href="/contact" className="text-sm">
+          <a href="/contact" className="text-lg">
             Contact
           </a>
         </div>
@@ -52,27 +74,27 @@ const App = () => {
 
       {/* Hero Section */}
       <section className="relative pb-12 md:py-20 pt-28 h-full">
-        <div className="flex flex-col items-center w-full relative font-sans">
+        <div className="flex flex-col items-center w-full relative font-mango">
           {/* Row 1 */}
           <div className="flex justify-between w-full md:w-[40%] max-md:px-10">
-            <span className="text-black font-bold tracking-tight md:leading-[110px] text-[clamp(2rem,6vw,10rem)]">
+            <span className="text-black font-bold tracking-tight md:leading-[110px] text-[clamp(3rem,6vw,10rem)]">
               WE
             </span>
-            <span className="text-black font-bold tracking-tight md:leading-[110px] text-[clamp(2rem,6vw,10rem)]">
+            <span className="text-black font-bold tracking-tight md:leading-[110px] text-[clamp(3rem,6vw,10rem)]">
               MAKE
             </span>
           </div>
           {/* Row 2 */}
           <div className="flex justify-between w-full md:w-[45%] max-md:px-8 ">
-            <span className="text-black font-bold tracking-tight md:leading-[110px] text-[clamp(2rem,6vw,10rem)]">
+            <span className="text-black font-bold tracking-tight md:leading-[110px] text-[clamp(2.5rem,6vw,10rem)]">
               CRE
             </span>
-            <span className="text-black font-bold tracking-tight md:leading-[110px] text-[clamp(2rem,6vw,10rem)]">
+            <span className="text-black font-bold tracking-tight md:leading-[110px] text-[clamp(2.5rem,6vw,10rem)]">
               ATIVE
             </span>
           </div>
           {/* Row 3 */}
-          <div className="flex justify-between w-full md:w-[60%] max-md:px-10 ">
+          <div className="flex justify-between w-full md:w-[60%] max-md:px-2">
             <span className="text-black font-bold tracking-tight md:leading-[110px] text-[clamp(2rem,6vw,10rem)]">
               THINGS
             </span>
@@ -107,11 +129,11 @@ const App = () => {
           </div>
           <div className="flex justify-center gap-8 md:w-[30%]">
             <div className="flex flex-col gap-2">
-              <h2 className="text-4xl font-bold text-black">420</h2>
+              <h2 className="text-4xl font-bold text-black font-mango">420</h2>
               <span className="text-gray-700 text-base">Completed Projects</span>
             </div>
             <div className="flex flex-col gap-2">
-              <h2 className="text-4xl font-bold text-black">10+</h2>
+              <h2 className="text-4xl font-bold text-black font-mango">10+</h2>
               <span className="text-gray-700 text-base">Years of experience</span>
             </div>
           </div>
@@ -119,12 +141,12 @@ const App = () => {
       </section>
 
       {/* Maquee Section */}
-      <div className="bg-black py-8 overflow-hidden">
+      <div className="bg-black py-8 overflow-hidden font-irish">
         <div className="flex items-center animate-marquee space-x-8 whitespace-nowrap">
           {items.map((item, index) => (
             <React.Fragment key={index}>
               <span
-                className={`text-white text-3xl font-bold ${item.color}`}
+                className={`text-3xl font-bold ${item.color}`}
               >
                 {item.text}
               </span>
@@ -148,13 +170,13 @@ const App = () => {
 
         {/* Right Text Section */}
         <div className="w-full md:w-1/2 flex flex-col text-left gap-4">
-          <h1 className="text-4xl font-bold text-black">
+          <h1 className="text-4xl font-bold text-black font-mango">
             UI/UX Design
           </h1>
-          <h4 className="text-2xl font-medium text-black">
+          <h4 className="text-2xl font-medium text-black ">
             Build, streamline and evolve together with solution
           </h4>
-          <p className="text-black/60 text-lg">
+          <p className="text-black/70 text-lg">
             Always ready to push the boundaries, especially when it comes to our
             own platform. Our analytical eye creates a site that is visually
             engaging and optimized for maximum performance. It perfectly reflects
@@ -164,41 +186,38 @@ const App = () => {
           </p>
 
           {/* Features List */}
-          {/* Features List */}
-          <ul className="grid md:grid-cols-2 grid-cols-1 gap-4 text-gray-700 text-sm md:text-base mb-4">
-            <li className="text-white px-4 py-2 rounded-full bg-gradient-to-r from-gray-800 via-gray-600 to-gray-800">
-              User Research
+          <ul className="grid md:grid-cols-2 gap-4 text-xl md:text-lg my-4  ">
+            <li className="text-black/90">
+              🥇 User Research
             </li>
-            <li className="text-white px-4 py-2 rounded-full bg-gradient-to-r from-green-700 to-pink-800">
-              Visual Design
+            <li className="text-black/90">
+              🎨 Visual Design
             </li>
-            <li className="text-white px-4 py-2 rounded-full bg-gradient-to-r from-teal-700 to-green-600">
-              Information Architecture
+            <li className="text-black/90">
+              🗂️ Information Architecture
             </li>
-            <li className="text-white px-4 py-2 rounded-full bg-gradient-to-r from-orange-600 to-blue-600">
-              Usability Testing & Iteration
+            <li className="text-black/90">
+              🔄 Usability Testing & Iteration
             </li>
-            <li className="text-white px-4 py-2 rounded-full bg-gradient-to-r from-blue-800 to-lime-700">
-              Wireframing & Prototyping
+            <li className="text-black/90">
+              🖌️ Wireframing & Prototyping
             </li>
-            <li className="text-white px-4 py-2 rounded-full bg-gradient-to-r from-purple-800 to-pink-700">
-              Implementation
+            <li className="text-black/90">
+              🚀 Implementation
             </li>
           </ul>
-
-
         </div>
       </section>
 
 
       {/* Features Section */}
-      <section className="py-16 ">
-        <h2 className="text-center text-black text-5xl font-bold mb-12">
+      <section className="md:py-16 py-6">
+        <h2 className="md:text-center max-md:px-6 font-mango text-black text-5xl font-bold mb-12">
           Features are more helpful to create <br /> creative shapes as well.
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8 px-6 max-w-6xl mx-auto">
           <div className="bg-black p-6 flex justify-center items-center rounded-md">
-            <img src={rings} alt="Rings" className="w-full h-auto rounded-md" />
+            <img src={rings} alt="Rings" className="w-full md:h-full h-96 rounded-md" />
           </div>
 
           {/* Text cards */}
@@ -228,11 +247,11 @@ const App = () => {
       </section>
 
       {/* Portfolio Section */}
-      <div className="bg-black text-white p-16">
+      <div className="bg-black text-white md:p-16 p-6">
         {/* Header */}
-        <div className="mb-8 flex justify-between items-end">
-          <h1 className="text-5xl font-bold mb-4">Take a look at ur most <br /> successful projects</h1>
-          <button className="border border-orange-500 text-orange-500 w-56 h-16 rounded-full hover:bg-orange-500 hover:text-black transition">
+        <div className="mb-8 flex justify-between max-md:flex-col md:items-end">
+          <h1 className="md:text-5xl text-3xl font-bold mb-4 font-mango">Take a look at ur most <br /> successful projects</h1>
+          <button className="border border-orange-500 text-orange-500 md:w-56 w-40 md:h-16 h-12 rounded-full hover:bg-orange-500 hover:text-black transition">
             View All Projects
           </button>
         </div>

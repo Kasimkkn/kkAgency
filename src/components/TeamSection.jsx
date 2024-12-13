@@ -4,25 +4,25 @@ import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 const TeamCard = ({ name, title, description, imgUrl, bgColor, socialLinks }) => {
     return (
         <div
-            className={`grid grid-cols-12 h-[200px] rounded-xl bg-[#e2dfd2]`}
+            className={`grid grid-cols-12 h-60 rounded-xl overflow-hidden bg-[#e2dfd2]`}
         >
             <div
-                className={`col-span-5 relative h-full overflow-hidden ${bgColor}`}
+                className={`col-span-5 relative overflow-hidden pt-4 ${bgColor}`}
             >
-                <img src={imgUrl} alt="" />
+                <img src={imgUrl} alt="" className="object-contain w-full h-full" />
             </div>
-            <div className="col-span-7 flex flex-col space-y-2 p-3">
-                <h3 className="text-xl font-bold mb-1 ">{name}</h3>
-                <p className="text-gray-500 text-sm mb-3">{title}</p>
-                <p className="text-gray-600 mb-4">{description}</p>
-                <div className="flex space-x-4">
+            <div className="col-span-7 flex flex-col md:space-y-2 space-y-2 p-3">
+                <h3 className="text-2xl md:text-4xl text-black font-bold font-serif">{name}</h3>
+                <p className="text-black/80 text-lg md:text-2xl">{title}</p>
+                <p className="text-black/80 text-base md:text-xl">{description}</p>
+                <div className="flex space-x-4 ">
                     {socialLinks.map((link, index) => (
                         <a
                             key={index}
                             href={link.url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-gray-500 hover:text-gray-800"
+                            className="text-black/80 text-3xl md:text-4xl hover:text-black/80"
                         >
                             {link.icon}
                         </a>
@@ -64,9 +64,9 @@ const TeamSection = () => {
     ];
 
     return (
-        <div className="p-12">
-            <h2 className="text-5xl font-bold text-center mb-8">Our Creative Team</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="md:p-12 p-6 ">
+            <h2 className="md:text-5xl text-3xl text-black font-bold md:text-center mb-8 font-mango">Our Creative Team</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 ">
                 {teamMembers.map((member, index) => (
                     <TeamCard key={index} {...member} />
                 ))}
